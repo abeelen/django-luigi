@@ -223,6 +223,6 @@ class ToORM(luigi.Task):
         output = self.output()
         self.setup_django()
         model = apps.get_model(self.app, self.model)
-        _ = model.objects.get_or_create(**dict(self.rows()))
+        _ = model.objects.update_or_create(**dict(self.rows()))
         output.touch()
         self._logger.info("Finished inserting rows into Django target")

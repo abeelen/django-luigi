@@ -1,12 +1,12 @@
 master
 ======
 
-Version 0.2
-===========
+Version 0.2.1
+=============
 
 Fixed
 -----
-* use `get_or_create` method to avoid problems with compose primary_key objects
+* use `update_or_create` method to avoid problems with compose primary_key objects
 
 
 Version 0.1
