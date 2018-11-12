@@ -224,10 +224,10 @@ class ToORM(luigi.Task):
         self.setup_django()
         model = apps.get_model(self.app, self.model)
         if model._meta.unique_together:
-            rows = dict(self.row())
+            rows = dict(self.rows())
             uniques = dict([(key, rows[key]) for key in model._meta.unique_together[0]])
             _ = model.objects.update_or_create(**uniques, defaults=rows)
         else:
-            _ = model.objects.update_or_create(**dict(self.rows()))
+            _ = model.objects.update_or_create(**dict(self.rows()))pip
         output.touch()
         self._logger.info("Finished inserting rows into Django target")
