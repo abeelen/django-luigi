@@ -228,6 +228,6 @@ class ToORM(luigi.Task):
             uniques = dict([(key, rows[key]) for key in model._meta.unique_together[0]])
             _ = model.objects.update_or_create(**uniques, defaults=rows)
         else:
-            _ = model.objects.update_or_create(**dict(self.rows()))pip
+            _ = model.objects.update_or_create(**dict(self.rows()))
         output.touch()
         self._logger.info("Finished inserting rows into Django target")
